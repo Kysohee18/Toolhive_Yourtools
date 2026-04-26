@@ -1,13 +1,13 @@
 # Toolhive
 
-A lightweight, self-hosted web app that bundles 89 everyday utilities into a single interface. Built with Python + Flask, zero JavaScript frameworks, and featuring a premium dark mode UI with a search-first layout — no bloat, just tools.
+Toolhive is a comprehensive, self-hosted web application that provides 89 distinct utilities within a unified interface. Engineered with Python and Flask, the application operates independently of JavaScript frameworks. It features a modern, responsive design optimized for navigation and performance.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![Flask](https://img.shields.io/badge/Flask-3.x-green)
 
-See [CHANGELOG.md](CHANGELOG.md) for release history and recent fixes.
+For release history and recent modifications, please refer to the [CHANGELOG.md](CHANGELOG.md).
 
-**Mirrors** (pick whichever you prefer — same code, same branch):
+**Repository Mirrors:**
 
 - Codeberg: https://codeberg.org/listyantidewi/your-everyday-tools
 - Bitbucket: https://bitbucket.org/your-everyday-tools/your-every-tools
@@ -165,32 +165,32 @@ See [CHANGELOG.md](CHANGELOG.md) for release history and recent fixes.
 
 ---
 
-## Quick Start
+## Installation and Setup
 
-### Easy start (recommended — no command line needed)
+### Automated Installation (Recommended)
 
-Install [Python 3.10+](https://www.python.org/downloads/) once (on Windows, tick **"Add Python to PATH"** during install), then:
+Ensure [Python 3.10+](https://www.python.org/downloads/) is installed on your system. For Windows users, verify that **"Add Python to PATH"** is selected during installation.
 
-| OS          | What to do                                                                                                                                               |
+| Operating System | Instructions |
 | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Windows** | Double-click `run.bat`                                                                                                                                   |
-| **macOS**   | Double-click `run.command`. First time only, open Terminal in this folder and run `chmod +x run.command` (macOS strips the executable bit on downloads). |
-| **Linux**   | `chmod +x run.sh && ./run.sh`                                                                                                                            |
+| **Windows** | Execute `run.bat` |
+| **macOS**   | Execute `run.command`. Upon initial execution, open Terminal in the directory and run `chmod +x run.command` to assign executable permissions. |
+| **Linux**   | Execute `chmod +x run.sh && ./run.sh` |
 
-The launcher creates a virtual environment, installs dependencies, starts the server, and opens your browser automatically. Close the window to stop. Subsequent runs skip the setup step.
+The initialization script automatically creates a virtual environment, installs required dependencies, launches the server, and opens the application in your default web browser. Subsequent executions will bypass the initial setup phase.
 
-### Simple Use (Dockerfile + docker-compose)
+### Pre-packaged Deployment (Docker Environment)
 
-Click [here](https://www.mediafire.com/file/3v1gug1h8gtd5pw/your-everyday-tools-simple-use.rar/file) and just double-click `start.bat` without the need to install the prerequisites.
+You can download the pre-configured deployment package [here](https://www.mediafire.com/file/3v1gug1h8gtd5pw/your-everyday-tools-simple-use.rar/file). Simply execute `start.bat` without requiring prior installation of prerequisites.
 
-Credit: [SyahrulMuchtaram](https://x.com/SyahrulMuchtarm)
+*Credit: [SyahrulMuchtaram](https://x.com/SyahrulMuchtarm)*
 
-### Manual install
+### Manual Installation
 
-If you prefer full control:
+For administrators requiring advanced configuration:
 
 ```bash
-# Clone the repository (pick any mirror — they track the same branch)
+# Clone the repository from your preferred mirror
 git clone https://github.com/listyantidewi1/your-everyday-tools.git toolhive
 # or: git clone https://codeberg.org/listyantidewi/your-everyday-tools.git toolhive
 # or: git clone https://bitbucket.org/your-everyday-tools/your-every-tools.git toolhive
@@ -215,7 +215,7 @@ Open **http://localhost:5000** in your browser.
 
 ## Optional Dependencies
 
-The core app works out of the box with the main dependencies. Some features require additional packages that may need system-level libraries:
+The core application operates with standard dependencies. Certain advanced functionalities require additional system-level libraries:
 
 | Package                               | Feature                                     | Notes                                                                                                                                                                                                                 |
 | ------------------------------------- | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -227,44 +227,33 @@ The core app works out of the box with the main dependencies. Some features requ
 | `ffmpeg` (external)                   | All Audio & Video tools                     | Requires the [FFmpeg](https://ffmpeg.org/download.html) binary on your `PATH`. Each media tool page shows a green banner if FFmpeg is detected, with install instructions if not.                                     |
 | `sqlparse`, `croniter`, `jsonpath-ng` | SQL Formatter, Cron Parser, JSONPath Tester | Small pure-Python packages included in `requirements.txt`. Everything else under _Developer Utilities_ runs entirely in the browser.                                                                                  |
 
-If you only need the core tools, install the minimal set:
+To install the minimal required dependencies for core functionality:
 
 ```bash
 pip install Flask Pillow PyMuPDF "qrcode[pil]" markdown reportlab img2pdf python-docx openpyxl xlrd
 ```
 
-### Enabling DWG support (ODA File Converter)
+### Enabling DWG Support
 
-DXF files work out of the box once you install `ezdxf` and `matplotlib`. For **DWG** files, the app shells out to the free **ODA File Converter** (by Open Design Alliance) to convert DWG → DXF, then renders the DXF. There is no reliable pure-Python library that reads DWG, so this extra step is necessary.
+While DXF files are supported natively via `ezdxf` and `matplotlib`, DWG format support requires the external **ODA File Converter**. The application utilizes this utility to convert DWG files to DXF format prior to rendering.
 
-1. **Download** the installer for your OS from [opendesign.com](https://www.opendesign.com/guestfiles/oda_file_converter). It's a free guest download — no account required.
-2. **Run the installer.** Defaults are fine.
-3. **Add it to your PATH** so the Flask app can find it. The app looks for a binary named `ODAFileConverter` or `oda_file_converter` using `shutil.which()`.
-   - **Windows** — add the install folder (contains `ODAFileConverter.exe`) to your `Path`:
-     - Press `Win + R` → `sysdm.cpl` → _Advanced_ tab → _Environment Variables_
-     - Under _System variables_, select `Path` → _Edit_ → _New_ → paste the folder, e.g.:
-       ```
-       C:\Program Files\ODA\ODAFileConverter 26.4.0
-       ```
-     - Click OK, open a **new** terminal, run `where ODAFileConverter` to verify.
-
-   - **macOS** — symlink the binary into `/usr/local/bin`:
-
+1. **Download** the appropriate installer from the [Open Design Alliance](https://www.opendesign.com/guestfiles/oda_file_converter).
+2. **Execute the installer** utilizing the default configuration.
+3. **Configure System PATH** to include the executable directory:
+   - **Windows**: Add the installation directory (containing `ODAFileConverter.exe`) to your system's `Path` environment variable. Verify by executing `where ODAFileConverter` in a new terminal session.
+   - **macOS**: Create a symbolic link to `/usr/local/bin`:
      ```bash
      sudo ln -s /Applications/ODAFileConverter.app/Contents/MacOS/ODAFileConverter /usr/local/bin/ODAFileConverter
      ```
-
      Verify with `which ODAFileConverter`.
-
-   - **Linux** — the `.deb` / `.rpm` package usually installs the binary on `PATH` automatically. If not:
+   - **Linux**: The `.deb` or `.rpm` package typically configures the `PATH` automatically. Alternatively:
      ```bash
      sudo ln -s /opt/ODAFileConverter_QT5*/ODAFileConverter /usr/local/bin/ODAFileConverter
      ```
      Verify with `which ODAFileConverter`.
+4. **Restart the Server.** The application evaluates the system PATH during initialization. Upon restart, the CAD utility page will indicate active DWG support.
 
-4. **Restart the Flask server.** PATH is read once at startup, so a running server won't see the new entry. After restart, the CAD tool page will show a green _"DWG support is enabled"_ banner.
-
-**No ODA, no problem:** if you can't install it (e.g. on a restricted machine), open your DWG in free tools like [Autodesk Viewer](https://viewer.autodesk.com/), LibreCAD, or QCAD, export as DXF, then upload the DXF here.
+*Alternative*: If installation of the ODA File Converter is not feasible, DWG files can be converted to DXF format using external software (e.g., [Autodesk Viewer](https://viewer.autodesk.com/), LibreCAD) prior to uploading.
 
 ---
 
@@ -320,32 +309,32 @@ toolhive/
     └── js/main.js                  # File upload, real-time search, AJAX, sidebar
 ```
 
-### Architecture Notes
+### Architecture Overview
 
-- **One universal template** — `upload_tool.html` powers all 25+ server-side tools. Each route passes title, description, accepted file types, and form options as template variables. No per-tool template duplication.
-- **Search-First Design** — The homepage features an instant real-time search that filters through the 89 tools smoothly.
-- **Client-side tools** (text utilities, calculators, security tools) run entirely in the browser with vanilla JavaScript — zero server round-trips.
-- **In-memory processing** — all file operations use `BytesIO`. No temporary files are written to disk.
-- **Modern UI** — custom CSS with CSS Grid, Flexbox, glassmorphism, and a sleek Dark Mode with Amber accents. The only external resource is Bootstrap Icons via CDN (~100 KB) for the icon set.
-- **Graceful degradation** — heavy optional packages (`rembg`, `pyzbar`, `pdf2docx`, `pytesseract`) and external binaries (ODA File Converter, FFmpeg) are probed at import time via `importlib` / `shutil.which`. If missing, the affected tool shows a clear install instruction instead of crashing.
+- **Universal Template Design**: `upload_tool.html` facilitates over 25 server-side tools dynamically. Each route supplies the template with requisite parameters, eliminating template redundancy.
+- **Optimized Navigation**: The interface integrates real-time search functionality for efficient access to all 89 utilities.
+- **Client-Side Processing**: Text utilities, calculators, and security tools execute locally within the browser, utilizing vanilla JavaScript to minimize server load.
+- **In-Memory Operations**: File processing leverages `BytesIO` to perform operations within memory, bypassing temporary disk storage.
+- **Modern Interface**: The UI is developed with custom CSS, employing modern layout techniques and a refined dark mode theme. External dependencies are minimized to Bootstrap Icons via CDN.
+- **Graceful Degradation**: Optional packages and external binaries are evaluated dynamically at runtime. In the absence of a dependency, the affected utility provides actionable installation guidance rather than experiencing a critical failure.
 
 ---
 
 ## Configuration
 
-The app has sensible defaults. You can adjust these in `app.py`:
+System parameters can be configured within `app.py`:
 
-| Setting              | Default  | Description                              |
-| -------------------- | -------- | ---------------------------------------- |
-| `MAX_CONTENT_LENGTH` | `100 MB` | Maximum upload file size                 |
-| `debug`              | `True`   | Flask debug mode (disable in production) |
-| `port`               | `5000`   | Server port                              |
+| Variable             | Default  | Description                                      |
+| -------------------- | -------- | ------------------------------------------------ |
+| `MAX_CONTENT_LENGTH` | `100 MB` | Maximum permissible file upload size             |
+| `debug`              | `True`   | Flask debug mode (must be disabled in production)|
+| `port`               | `5000`   | Application listening port                       |
 
 ---
 
-## Deployment
+## Production Deployment
 
-For production use, run with a WSGI server instead of the built-in Flask server:
+For production environments, it is imperative to utilize a robust WSGI server rather than the integrated Flask development server:
 
 ```bash
 pip install gunicorn
@@ -361,12 +350,3 @@ waitress-serve --port=8000 app:app
 
 ---
 
-## Support
-
-This project is free and always will be — no features are gated and there's no roadmap item that requires funding. If you've found it useful and want to send a tip as a thank-you, you can via **QRIS** (Indonesia's QR payment standard, also accepted across several ASEAN countries):
-
-<p align="center">
-  <img src="images/qris_new.png" alt="QRIS payment code" width="260">
-</p>
-
-Completely optional. Bug reports, suggestions, and pull requests are just as welcome — and free.
