@@ -7,11 +7,7 @@ Toolhive is a comprehensive, self-hosted web application that provides 89 distin
 
 For release history and recent modifications, please refer to the [CHANGELOG.md](CHANGELOG.md).
 
-**Repository Mirrors:**
 
-- Codeberg: https://codeberg.org/kysohee18/toolhive
-- Bitbucket: https://bitbucket.org/kysohee18/toolhive
-- GitHub: https://github.com/kysohee18/toolhive
 
 ## Screenshots
 
