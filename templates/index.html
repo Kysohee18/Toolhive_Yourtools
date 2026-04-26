@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Toolhive — Every tool, one hive{% endblock %}
+
+{% block content %}
+<div class="home-hero">
+    <h1>Toolhive</h1>
+    <p>Every tool, one hive.</p>
+</div>
+
+<div class="search-container">
+    <input type="text" class="search-input" id="tool-search"
+           placeholder="Search 89 tools..." autocomplete="off" autofocus>
+    <i class="bi bi-search"></i>
+</div>
+<div class="search-count" id="search-count"></div>
+
+{% for cat in tool_categories %}
+<div class="category-section" data-category="{{ cat.id }}">
+    <div class="category-title">
+        <i class="bi {{ cat.icon }}"></i> {{ cat.name }}
+    </div>
+    <div class="tools-grid">
+        {% for tool in cat.tools %}
+        <a href="/{{ cat.id }}/{{ tool.id }}" class="tool-card"
+           data-name="{{ tool.name|lower }}" data-desc="{{ tool.desc|lower }}">
+            <div class="card-icon"><i class="bi {{ tool.icon }}"></i></div>
+            <div class="card-body">
+                <h3>{{ tool.name }}</h3>
+                <p>{{ tool.desc }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+
+<div class="no-results" id="no-results">
+    <i class="bi bi-search"></i>
+    <p>No tools found. Try a different keyword.</p>
+</div>
+{% endblock %}
