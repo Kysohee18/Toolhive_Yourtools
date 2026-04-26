@@ -9,9 +9,9 @@ For release history and recent modifications, please refer to the [CHANGELOG.md]
 
 **Repository Mirrors:**
 
-- Codeberg: https://codeberg.org/listyantidewi/your-everyday-tools
-- Bitbucket: https://bitbucket.org/your-everyday-tools/your-every-tools
-- GitHub: https://github.com/listyantidewi1/your-everyday-tools
+- Codeberg: https://codeberg.org/kysohee18/toolhive
+- Bitbucket: https://bitbucket.org/kysohee18/toolhive
+- GitHub: https://github.com/kysohee18/toolhive
 
 ## Screenshots
 
@@ -181,9 +181,9 @@ The initialization script automatically creates a virtual environment, installs 
 
 ### Pre-packaged Deployment (Docker Environment)
 
-You can download the pre-configured deployment package [here](https://www.mediafire.com/file/3v1gug1h8gtd5pw/your-everyday-tools-simple-use.rar/file). Simply execute `start.bat` without requiring prior installation of prerequisites.
+Anda dapat mengunduh paket implementasi yang telah dikonfigurasi sebelumnya [di sini](https://www.mediafire.com/file/contoh-link-baru/toolhive-deployment.rar). Cukup jalankan `start.bat` tanpa perlu instalasi prasyarat manual.
 
-*Credit: [SyahrulMuchtaram](https://x.com/SyahrulMuchtarm)*
+*Maintained by: [kysohee18](https://github.com/kysohee18)*
 
 ### Manual Installation
 
@@ -191,10 +191,7 @@ For administrators requiring advanced configuration:
 
 ```bash
 # Clone the repository from your preferred mirror
-git clone https://github.com/listyantidewi1/your-everyday-tools.git toolhive
-# or: git clone https://codeberg.org/listyantidewi/your-everyday-tools.git toolhive
-# or: git clone https://bitbucket.org/your-everyday-tools/your-every-tools.git toolhive
-# (Optional) SSH: git clone git@github.com:listyantidewi1/your-everyday-tools.git toolhive
+git clone https://github.com/kysohee18/toolhive.git
 cd toolhive
 
 # Create a virtual environment (recommended)
