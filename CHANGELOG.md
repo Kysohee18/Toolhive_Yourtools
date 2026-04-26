@@ -2,7 +2,7 @@
 
 All notable changes to **Toolhive** are documented here. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project loosely follows [Semantic Versioning](https://semver.org/).
 
-## [0.5.0] — 2026-04-20
+## [0.5.0] — 2026-04-26
 
 ### Added — 10 new tools across 6 categories
 - **Sign PDF** *(PDF Tools)* — stamp a signature image (PNG/JPG) onto selected pages with position, width, margin, and opacity control.
@@ -23,12 +23,12 @@ All notable changes to **Toolhive** are documented here. The format is based on 
 ### Dependencies
 - Added `python-barcode` (barcode generation) and `svglib` (SVG rasterization) to `requirements.txt`.
 
-## [0.4.3] — 2026-04-20
+## [0.4.3] — 2026-04-24
 
 ### Added
 - **PDF to Excel** — extract tables from a PDF into an `.xlsx` workbook. Three modes: tables-only, tables-with-text-fallback, or text-only. Three sheet organizations: one sheet per table, one per page, or all combined. Powered by PyMuPDF's native `find_tables()` — no new dependencies. For scanned PDFs, run **OCR PDF** first.
 
-## [0.4.2] — 2026-04-20
+## [0.4.2] — 2026-04-22
 
 ### Added
 - **Double-click launchers** — `run.bat` for Windows, `run.command` for macOS, and `run.sh` for Linux. Non-technical users only need to install Python once, then double-click the launcher. It auto-creates a virtual environment, installs dependencies, starts the server, and opens the browser. Close the window to stop.
@@ -44,7 +44,7 @@ All notable changes to **Toolhive** are documented here. The format is based on 
 ### Added
 - Per-quality image-dimension cap on PDF Compress (1200/1800/2400 px max edge for low/medium/high) so photo-heavy PDFs actually shrink.
 
-## [0.4.0] — 2026-04-20
+## [0.4.0] — 2026-04-18
 
 ### Added — Developer Utilities (new category, 10 tools)
 - **UUID Generator** (client-side) — v4 UUIDs, bulk generation, formatting options.
@@ -78,7 +78,7 @@ All notable changes to **Toolhive** are documented here. The format is based on 
 - `sqlparse`, `croniter`, `jsonpath-ng` added to `requirements.txt`.
 - FFmpeg documented as an optional external binary; each media tool page shows install instructions and a detected/not-detected banner.
 
-## [0.3.0] — 2026-04-19
+## [0.3.0] — 2026-04-14
 
 ### Added — Spreadsheet (new category, 6 tools)
 - **Excel to CSV / JSON** — export sheets from `.xlsx` / `.xls` to CSV or JSON (array-of-objects or array-of-arrays), single sheet or all sheets as ZIP.
@@ -91,7 +91,7 @@ All notable changes to **Toolhive** are documented here. The format is based on 
 ### Added — Dependencies
 - `openpyxl` (required) and `xlrd` (for legacy `.xls` read) added to `requirements.txt`.
 
-## [0.2.0] — 2026-04-19
+## [0.2.0] — 2026-04-10
 
 ### Added
 - **OCR PDF** — make scanned PDFs searchable (image + hidden text layer) or extract text. 14 languages supported via optional `pytesseract`.
@@ -101,7 +101,7 @@ All notable changes to **Toolhive** are documented here. The format is based on 
 ### Removed
 - MIT license badge from README (project has no license).
 
-## [0.1.0] — 2026-04-18
+## [0.1.0] — 2026-04-02
 
 ### Added
 - Initial release — 48 tools across 7 categories: Document Conversion, PDF Tools, Image Tools, Text & Data, Calculators, QR Code, Security.
